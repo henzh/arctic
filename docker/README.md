@@ -16,7 +16,7 @@ $ docker ps
 Enter inside a container
 
 ```
-$ docker exec -it [service] bin/sh
+$ docker exec -it [service] sh
 ```
 
 ```
@@ -24,4 +24,3 @@ $
 ```
 
 __note__: checkout launch.json for debug mode configurations on VS Code
- 
