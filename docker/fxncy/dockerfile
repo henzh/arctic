@@ -2,17 +2,23 @@
 
 FROM node:14.7.0-alpine3.10 as dev
 
-RUN mkdir /work/
-WORKDIR /work/
+WORKDIR /work
 
 COPY ./src/package.json /work/package.json
 RUN npm install
 RUN npm install -g nodemon
 
-COPY ./src/ /work/src/
+COPY ./src/ /work/
+
+ENTRYPOINT [ "nodemon", "--inspect=0.0.0.0", "./src/server.js" ]
 
 ############### PRODUCTION IMAGE ###############
 
-FROM dev as prod
+FROM node:14.7.0-alpine3.10 as prod
+
+WORKDIR /work
+COPY ./src/package.json /work/package.json
+RUN npm install
+COPY ./src/ /work/
 
 CMD node .

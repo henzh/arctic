@@ -5,42 +5,41 @@ services:
     # when running 'docker-compose build fxncy'.
     fxncy:
         container_name: fxncy
-        # image:
         build: 
             context: ./fxncy
             target: dev
-        working_dir: /work     # Comment out for build.target:prod
-        entrypoint: /bin/sh   # Comment out for build.target:prod
-        stdin_open: true       # Comment out for build.target:prod
-        tty: true              # Comment out for build.target:prod
+        # working_dir: /work
+        # entrypoint: /bin/sh
+        # stdin_open: true
+        # tty: true
         volumes:
-            - ./fxncy/src/:/work
+            - ./fxncy/src/:/work/src
         ports:
             - 5000:5000
+            - 9229:9229
     # jelly:
     #     container_name: jelly
     #     # image:
     #     build:
     #         context: ./jelly
     #         target: dev
-    #     working_dir: /work     # Comment out for build.target:prod
-    #     entrypoint: /bin/sh   # Comment out for build.target:prod
-    #     stdin_open: true       # Comment out for build.target:prod
-    #     tty: true              # Comment out for build.target:prod
+    #     working_dir: /work
+    #     entrypoint: /bin/sh
+    #     stdin_open: true
+    #     tty: true
     #     volumes
     #         - ./jelly/src/:/work
     #     ports
     #         - 5001:5000
     piepie:
         container_name: piepie
-        # image:
         build:
             context: ./piepie
             target: dev
-        working_dir: /work     # Comment out for build.target:prod
-        entrypoint: /bin/sh   # Comment out for build.target:prod
-        stdin_open: true       # Comment out for build.target:prod
-        tty: true              # Comment out for build.target:prod
+        # working_dir: /work 
+        # entrypoint: /bin/sh
+        # stdin_open: true
+        # tty: true
         volumes:
             - ./piepie/src/:/work
         ports:
