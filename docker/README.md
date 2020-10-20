@@ -1,9 +1,16 @@
 # Docker Samples
 
-Build
+Build all
 
 ```
 $ docker-compose build [service]
+```
+
+Build single container
+
+```
+$ cd [project root]
+$ docker build . -t [tag name]
 ```
 
 Run all containers
@@ -17,6 +24,20 @@ Run single container
 
 ```
 $ docker-compose up -d [service]
+```
+
+or 
+
+```
+$ cd [project space]
+$ docker run -it --rm -v ${PWD}:/work -w /work [image] bash
+```
+
+or 
+
+```
+$ cd [project space]
+$ docker run -it --rm -v ${PWD}:/work -p 8080:8080 [image]
 ```
 
 Enter inside a container

@@ -17,20 +17,20 @@ services:
         ports:
             - 5000:5000
             - 9229:9229
-    # jelly:
-    #     container_name: jelly
-    #     # image:
-    #     build:
-    #         context: ./jelly
-    #         target: dev
-    #     working_dir: /work
-    #     entrypoint: /bin/sh
-    #     stdin_open: true
-    #     tty: true
-    #     volumes
-    #         - ./jelly/src/:/work
-    #     ports
-    #         - 5001:5000
+    jelly:
+        container_name: jelly
+        # image:
+        build:
+            context: ./jelly
+            target: dev
+        # working_dir: /work
+        # entrypoint: /bin/sh
+        # stdin_open: true
+        # tty: true
+        volumes:
+            - ./jelly/src:/work/src
+        ports:
+            - 8080:8080
     piepie:
         container_name: piepie
         build:
