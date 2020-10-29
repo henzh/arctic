@@ -30,7 +30,7 @@ services:
         volumes:
             - ./jelly/src:/work/src
         ports:
-            - 8080:8080
+            - 5005:5005
     piepie:
         container_name: piepie
         build:

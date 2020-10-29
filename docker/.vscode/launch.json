@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Java Attach",
+            "type": "java",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 5005
+        },
+        {
             "name": "Python Attach",
             "type": "python",
             "request": "attach", // container attach

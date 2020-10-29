@@ -37,7 +37,7 @@ or
 
 ```
 $ cd [project space]
-$ docker run -it --rm -v ${PWD}:/work -p 8080:8080 [image]
+$ docker run -it --rm -v ${PWD}:/work -p 5005:5005 [image]
 ```
 
 Enter inside a container
