@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-buster as dev
+FROM openjdk:14-jdk-buster as dev
 
 WORKDIR /work
 
@@ -11,5 +11,7 @@ COPY . /work
 RUN ./mvnw clean install
 RUN chmod +x /work/target/jelly-0.0.1-SNAPSHOT.jar
 
-# ENTRYPOINT ["java", "-jar", "/work/target/jelly-0.0.1-SNAPSHOT.jar"]
-ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,address=5005,suspend=y", "-jar", "/work/target/jelly-0.0.1-SNAPSHOT.jar"]
+ENV JAVA_TOOL_OPTIONS -agentlib:jdwp=transport=dt_socket,server=y,address=*:8080,suspend=y
+
+ENTRYPOINT ["java", "-jar", "/work/target/jelly-0.0.1-SNAPSHOT.jar"]
+# ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,address=5005,suspend=y", "-jar", "/work/target/jelly-0.0.1-SNAPSHOT.jar"]
