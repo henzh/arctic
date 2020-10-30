@@ -1,16 +1,16 @@
 project = fake
 
 dev-build:
-	docker-compose -p $(project)-dev -f docker-compose.test.yaml
+	docker-compose -p $(project)_dev -f docker-compose.test.yaml build
 
 prod-build:
-	docker-compose build -p $(project)-prod -f docker-compose.yaml
+	docker-compose build -p $(project)_prod -f docker-compose.yaml build
 
 dev-up:
-	docker-compose up -p $(project)-dev -f docker-compose.test.yaml
+	docker-compose -p $(project)_dev -f docker-compose.test.yaml up
 
 prod-up:
-	docker-compose up -p $(project)-prod -f docker-compose.yaml
+	docker-compose -p $(project)_prod -f docker-compose.yaml up
 
 pycache-clean:
 	sudo find . -type f -name "*.py[co]" -delete
