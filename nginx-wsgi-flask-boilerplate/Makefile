@@ -4,13 +4,13 @@ dev-build:
 	docker-compose -p $(project)_dev -f docker-compose.test.yaml build
 
 prod-build:
-	docker-compose build -p $(project)_prod -f docker-compose.yaml build
+	docker-compose -p $(project)_prod build
 
 dev-up:
-	docker-compose -p $(project)_dev -f docker-compose.test.yaml up
+	docker-compose -p $(project)_dev -f docker-compose.test.yaml up --build
 
 prod-up:
-	docker-compose -p $(project)_prod -f docker-compose.yaml up
+	docker-compose -p $(project)_prod up --build
 
 pycache-clean:
 	sudo find . -type f -name "*.py[co]" -delete

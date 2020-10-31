@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/api/v1/ping')
 def ping():
-    return 'Alive!'
+    return jsonify('Alive!')
 
 
 @app.route('/api/v1/fake', methods=['GET', 'POST'])
