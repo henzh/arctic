@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package bookie
+
+message CarBook {
+    uint64 id = 1
+
+}
