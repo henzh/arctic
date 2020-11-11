@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package bookie;
+
+message CarBookRequest {
+    uint64 customer_id = 1;
+    uint64 car_id = 2;
+    uint32 quantity = 3;
+}

@@ -1,2 +1,4 @@
+grpcio==1.33.2
 grpcio-tools==1.33.2
+protobuf==3.13.0
 psycopg2==2.8.6
