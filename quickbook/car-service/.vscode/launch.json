@@ -9,10 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "console": "integratedTerminal",
-            "env": {
-                "PYTHONPATH": "/Users/henryzhao/Workspace/arctic/quickbook/car-service/src"
-            }
+            "console": "integratedTerminal"
         }
     ]
 }
