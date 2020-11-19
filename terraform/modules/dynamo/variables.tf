@@ -1,0 +1,7 @@
+variable "application" {
+
+}
+
+variable "environment" {
+
+}

@@ -2,8 +2,31 @@ syntax = "proto3";
 
 package bookie;
 
-message CarBookRequest {
-    uint64 customer_id = 1;
-    uint64 car_id = 2;
-    uint32 quantity = 3;
+service CarBooker {
+    rpc AddInventory(AddInventoryRequest) returns (AddInventoryReply) {}
+    rpc BookCar(BookCarRequest) returns (BookCarReply) {}
+}
+
+message AddInventoryRequest {
+    uint32 car_id = 1;
+    uint32 quantity = 2;
+}
+
+message AddInventoryReply {
+    uint32 car_id = 1;
+    string brand = 2;
+    string model = 3;
+    uint32 available = 4;
+}
+
+message BookCarRequest {
+    uint32 car_id = 1;
+    uint32 quantity = 2;
+}
+
+message BookCarReply {
+    uint32 car_id = 1;
+    string brand = 2;
+    string model = 3;
+    uint32 purchased = 4;
 }

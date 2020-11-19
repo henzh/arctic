@@ -1,4 +1,4 @@
-FROM python:3.8 as base
+FROM python:3.8
 
 ARG PROTOC_ZIP=protoc-3.7.1-linux-x86_64.zip
 
@@ -10,7 +10,7 @@ ARG PROTOC_ZIP=protoc-3.7.1-linux-x86_64.zip
 #     g++ \
 #     make \
 #     musl-dev \
-#     python3-dev \
+#     python3-dev \s
 #     libc6-compat \  
 #     && rm -rf /var/cache/apk/*
 
@@ -20,19 +20,22 @@ RUN unzip -o $PROTOC_ZIP -d /usr/local 'include/*'
 RUN rm -f $PROTOC_ZIP
 
 # COPY ./protos/ /quickbook/protos/
-COPY ./ /quickbook/
+COPY ./ /home/quickbook/
 
-WORKDIR /quickbook
+ENV PYTHONPATH /home/quickbook/src
 
-RUN pip3 install -r /quickbook/requirements.txt
-RUN python -m grpc_tools.protoc -I./protos --python_out=./target --grpc_python_out=./target ./protos/*.proto
+WORKDIR /home/quickbook
+
+RUN pip3 install -r /home/quickbook/requirements.txt
+RUN python -m grpc_tools.protoc -I./protos --python_out=./src --grpc_python_out=./src ./protos/*.proto
 # RUN protoc --proto_path=proto proto/*.proto --go_out=plugins=grpc:target
 
 # FROM base as dev
 
 # WORKDIR /quickbook/src
 
-# CMD python server.py
+CMD python src/server.py
+
 
 # RUN pip install ptvsd
 
