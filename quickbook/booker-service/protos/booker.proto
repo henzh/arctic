@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package quickbook;
+
+// import quickbook.Car as Car;
+
+service Booker {
+    rpc book(BookRequest) returns (BookReply) {}
+    rpc list(ListRequest) returns (ListReply) {}
+}
+
+message ItemRequest {
+    uint32 id = 1;
+    uint32 quantity = 2;
+}
+
+message BookRequest {
+    uint32 customer_id = 1;
+    ItemRequest car = 2;
+    ItemRequest room = 3;
+    ItemtRequest flight = 4;
+}
+
+message BookReply {
+    Car car = 1;
+    Room room = 2;
+    Flight flight = 3;
+    bool booked = 4;
+}
+
+message ListReply {
+    repeated Car cars = 1;
+    repeated Room rooms = 2;
+    repeated Flight flights = 3;
+}

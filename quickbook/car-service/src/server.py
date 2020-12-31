@@ -43,10 +43,7 @@ class CarBooker(car_booking_pb2_grpc.CarBookerServicer):
         self._dinterface.write(query)
 
         return car_booking_pb2.AddInventoryReply(
-            car_id=car_id,
-            brand=brand,
-            model=model,
-            available=total)
+            car=car_booking_pb2.Car(car_id=car_id, brand=brand, model=model, quantity=total))
 
     def BookCar(self, request, context):
         query = """
@@ -76,11 +73,8 @@ class CarBooker(car_booking_pb2_grpc.CarBookerServicer):
 
         self._dinterface.write(query)
 
-        return car_booking_pb2.BookCarReply(
-            car_id=car_id,
-            brand=brand,
-            model=model,
-            purchased=remaining)
+        return car_booking_pb2.AddInventoryReply(
+            car=car_booking_pb2.Car(car_id=car_id, brand=brand, model=model, quantity=remaining))
 
 
 def serve():
